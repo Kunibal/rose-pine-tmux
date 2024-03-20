@@ -212,33 +212,33 @@ main() {
 
     # Settings that allow user to choose their own icons and status bar behaviour
     # START
-    local current_window_icon
-    current_window_icon="$(get_tmux_option "@rose_pine_current_window_icon" "")"
-    readonly current_window_icon
+    # local current_window_icon
+    # current_window_icon="$(get_tmux_option "@rose_pine_current_window_icon" "")"
+    # readonly current_window_icon
 
-    local current_session_icon
-    current_session_icon="$(get_tmux_option "@rose_pine_session_icon" "")"
-    readonly current_session_icon
+    # local current_session_icon
+    # current_session_icon="$(get_tmux_option "@rose_pine_session_icon" "")"
+    # readonly current_session_icon
 
-    local username_icon
-    username_icon="$(get_tmux_option "@rose_pine_username_icon" "")"
-    readonly username_icon
+    # local username_icon
+    # username_icon="$(get_tmux_option "@rose_pine_username_icon" "")"
+    # readonly username_icon
 
-    local hostname_icon
-    hostname_icon="$(get_tmux_option "@rose_pine_hostname_icon" "󰒋")"
-    readonly hostname_icon
+    # local hostname_icon
+    # hostname_icon="$(get_tmux_option "@rose_pine_hostname_icon" "󰒋")"
+    # readonly hostname_icon
 
-    local date_time_icon
-    date_time_icon="$(get_tmux_option "@rose_pine_date_time_icon" "󰃰")"
-    readonly date_time_icon
+    # local date_time_icon
+    # date_time_icon="$(get_tmux_option "@rose_pine_date_time_icon" "󰃰")"
+    # readonly date_time_icon
 
-    local current_folder_icon
-    current_folder_icon="$(get_tmux_option "@rose_pine_folder_icon" "")"
-    readonly current_folder_icon
+    # local current_folder_icon
+    # current_folder_icon="$(get_tmux_option "@rose_pine_folder_icon" "")"
+    # readonly current_folder_icon
 
     # Changes the icon / character that goes between each window's name in the bar
     local window_status_separator
-    window_status_separator="$(get_tmux_option "@rose_pine_window_status_separator" "  ")"
+    window_status_separator="$(get_tmux_option "@rose_pine_window_status_separator" " | ")"
 
     # This setting does nothing by itself, it enables the 2 below it to toggle the simplified bar
     local prioritize_windows
@@ -253,10 +253,10 @@ main() {
     user_window_count="$(get_tmux_option "@rose_pine_window_count" "")"
 
     local right_separator
-    right_separator="$(get_tmux_option "@rose_pine_right_separator" "  ")"
+    right_separator="$(get_tmux_option "@rose_pine_right_separator" " < ")"
 
     local left_separator
-    left_separator="$(get_tmux_option "@rose_pine_left_separator" "  ")"
+    left_separator="$(get_tmux_option "@rose_pine_left_separator" " > ")"
 
     local field_separator
     # NOTE: Don't remove
@@ -271,7 +271,7 @@ main() {
     # These variables are the defaults so that the setw and set calls are easier to parse
 
     local show_window
-    readonly show_window=" #[fg=$thm_subtle]$current_window_icon #[fg=$thm_rose]#W$spacer"
+    readonly show_window=" #[fg=$thm_subtle] #[fg=$thm_rose]#W$spacer"
 
     local show_window_in_window_status
     show_window_in_window_status="#[fg=$thm_iris]#I#[fg=$thm_iris,]$left_separator#[fg=$thm_iris]#W"
@@ -280,19 +280,19 @@ main() {
     show_window_in_window_status_current="#I#[fg=$thm_gold,bg=""]$left_separator#[fg=$thm_gold,bg=""]#W"
 
     local show_session
-    readonly show_session=" #[fg=$thm_text]$current_session_icon #[fg=$thm_text]#S "
+    readonly show_session=" #[fg=$thm_text] #[fg=$thm_text]#S "
 
     local show_user
-    readonly show_user="#[fg=$thm_iris]#(whoami)#[fg=$thm_subtle]$right_separator#[fg=$thm_subtle]$username_icon"
+    readonly show_user="#[fg=$thm_iris]#(whoami)#[fg=$thm_subtle]$right_separator#[fg=$thm_subtle]"
 
     local show_host
-    readonly show_host="$spacer#[fg=$thm_text]#H#[fg=$thm_subtle]$right_separator#[fg=$thm_subtle]$hostname_icon"
+    readonly show_host="$spacer#[fg=$thm_text]#H#[fg=$thm_subtle]$right_separator#[fg=$thm_subtle]"
 
     local show_date_time
-    readonly show_date_time=" #[fg=$thm_foam]$date_time#[fg=$thm_subtle]$right_separator#[fg=$thm_subtle]$date_time_icon "
+    readonly show_date_time=" #[fg=$thm_foam]$date_time#[fg=$thm_subtle]$right_separator#[fg=$thm_subtle] "
 
     local show_directory
-    readonly show_directory="$spacer#[fg=$thm_subtle]$current_folder_icon #[fg=$thm_rose]#{b:pane_current_path} "
+    readonly show_directory="$spacer#[fg=$thm_subtle] #[fg=$thm_rose]#{b:pane_current_path} "
 
     local show_directory_in_window_status
     # BUG: It doesn't let the user pass through a custom window name
@@ -424,10 +424,10 @@ main() {
     fi
 
     # Defaults to a NerdFont icon, user can change through an option
-    if [[ "$window_status_separator" != "  " ]]; then
+    if [[ "$window_status_separator" != " | " ]]; then
         setw window-status-separator "$window_status_separator"
     else
-        setw window-status-separator "  "
+        setw window-status-separator " | "
     fi
 
     # Leaves only the window list on the left side
