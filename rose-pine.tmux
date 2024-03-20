@@ -212,29 +212,29 @@ main() {
 
     # Settings that allow user to choose their own icons and status bar behaviour
     # START
-    # local current_window_icon
-    # current_window_icon="$(get_tmux_option "@rose_pine_current_window_icon" "")"
-    # readonly current_window_icon
+    local current_window_icon
+    current_window_icon="$(get_tmux_option "@rose_pine_current_window_icon" "")"
+    readonly current_window_icon
 
-    # local current_session_icon
-    # current_session_icon="$(get_tmux_option "@rose_pine_session_icon" "")"
-    # readonly current_session_icon
+    local current_session_icon
+    current_session_icon="$(get_tmux_option "@rose_pine_session_icon" "")"
+    readonly current_session_icon
 
-    # local username_icon
-    # username_icon="$(get_tmux_option "@rose_pine_username_icon" "")"
-    # readonly username_icon
+    local username_icon
+    username_icon="$(get_tmux_option "@rose_pine_username_icon" "")"
+    readonly username_icon
 
-    # local hostname_icon
-    # hostname_icon="$(get_tmux_option "@rose_pine_hostname_icon" "󰒋")"
-    # readonly hostname_icon
+    local hostname_icon
+    hostname_icon="$(get_tmux_option "@rose_pine_hostname_icon" "")"
+    readonly hostname_icon
 
-    # local date_time_icon
-    # date_time_icon="$(get_tmux_option "@rose_pine_date_time_icon" "󰃰")"
-    # readonly date_time_icon
+    local date_time_icon
+    date_time_icon="$(get_tmux_option "@rose_pine_date_time_icon" "")"
+    readonly date_time_icon
 
-    # local current_folder_icon
-    # current_folder_icon="$(get_tmux_option "@rose_pine_folder_icon" "")"
-    # readonly current_folder_icon
+    local current_folder_icon
+    current_folder_icon="$(get_tmux_option "@rose_pine_folder_icon" "")"
+    readonly current_folder_icon
 
     # Changes the icon / character that goes between each window's name in the bar
     local window_status_separator
